@@ -16,6 +16,12 @@ public class EnrolmentService {
     }
 
     public Enrollment addEnrollment(Enrollment enrollment) {
+        if(enrollment.getEnroldate().isAfter(enrollment.getCourse().getStartdate())){
+//throw an exception
+        }
+        if(this.enrollmentrepository.countByCourse(enrollment.getCourse()) +1  >= enrollment.getCourse().getCapacity()){
+            //throw an exception
+        }
         return this.enrollmentrepository.save(enrollment);
     }
 }
