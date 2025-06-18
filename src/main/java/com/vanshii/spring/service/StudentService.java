@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.vanshii.spring.Exceptions.NotFoundExceptions;
 import com.vanshii.spring.entities.Student;
 import com.vanshii.spring.repositry.StudentRepositry;
 
@@ -23,16 +24,20 @@ public class StudentService {
 
     public Student getStudentById(long studentid) {
         Optional<Student> optionalValue = this.studentRepositry.findById(studentid);
-        if (optionalValue.isEmpty()) {
-            return null;
+        if(optionalValue.isEmpty()){
+            throw new NotFoundExceptions("Student with id " + studentid + " not found");
         }
+
         return optionalValue.get();
-    }
+        //return optionalValue.orElseThrow(()-> {
+          //   return new NotFoundExceptions("Student with id " + studentid + " not found");
+            //});
+        }
 
   public Student updateStudent(Student student){
         Student existingStudent=this.getStudentById(student.getId());
-        if(existingStudent==null)
-        return null;
+      //  if(existingStudent==null)
+        //return null;
 existingStudent.setFirstn(student.getFirstn());
 existingStudent.setLastn(student.getLastn());
 return this.studentRepositry.save(existingStudent);
