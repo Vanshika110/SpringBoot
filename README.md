@@ -1,2 +1,4 @@
 # SpringBoot
-This repo includes spring boot code, rest api,  crud operation, mysql setup, exception hadling, validation and postman testing, secure Apis with basic authentication
+Built a backend system using Spring Boot to manage students, courses, and enrollments with full CRUD functionality.
+Implemented RESTful APIs with proper controller-service-repository architecture, validation, and custom exception handling.
+Integrated MySQL for relational data storage and tested all endpoints using Postman for reliable API response handling
